@@ -1,0 +1,7 @@
+{
+  "name": "Sinthiya Telecom",
+  "description": "Premium WiFi and Telecom services in Hat Pangashi, Sirajganj.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
