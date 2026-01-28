@@ -87,29 +87,29 @@ const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-24 bg-slate-950 scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
+    <section id="services" className="py-16 md:py-24 bg-slate-950 scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4">Our <span className="text-sky-400">Services</span></h2>
-          <p className="text-slate-400 mb-8 max-w-2xl mx-auto">আমরা দিচ্ছি আধুনিক ও দ্রুততম টেলিকম এবং ডিজিটাল ব্যাংকিং সেবা। নিচে ক্লিক করে বিস্তারিত দেখুন।</p>
-          <div className="w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
+          <p className="text-slate-400 mb-6 md:mb-8 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">আমরা দিচ্ছি আধুনিক ও দ্রুততম টেলিকম এবং ডিজিটাল ব্যাংকিং সেবা। নিচে ক্লিক করে বিস্তারিত দেখুন।</p>
+          <div className="w-16 md:w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((s) => (
             <div 
               key={s.id} 
               onClick={() => openModal(s)}
-              className="group relative cursor-pointer"
+              className="group relative cursor-pointer active:scale-[0.98] transition-transform"
             >
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${s.color} rounded-3xl blur opacity-10 group-hover:opacity-100 transition duration-500`}></div>
-              <div className="relative bg-slate-900 border border-white/5 p-8 rounded-3xl h-full flex flex-col hover:translate-y-[-8px] transition-all duration-300">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center text-white mb-6 shadow-lg transform group-hover:scale-110 transition-transform`}>
+              <div className={`absolute -inset-0.5 bg-gradient-to-r ${s.color} rounded-3xl blur opacity-0 group-hover:opacity-100 md:opacity-10 transition duration-500`}></div>
+              <div className="relative bg-slate-900 border border-white/5 p-6 md:p-8 rounded-3xl h-full flex flex-col hover:translate-y-[-8px] transition-all duration-300">
+                <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center text-white mb-6 shadow-lg transform group-hover:scale-110 transition-transform`}>
                   {s.icon}
                 </div>
-                <h3 className="text-xl font-bold font-orbitron text-white mb-4 group-hover:text-sky-400 transition-colors">{s.title}</h3>
-                <p className="text-slate-400 leading-relaxed text-sm mb-6">{s.desc}</p>
-                <div className="mt-auto flex items-center gap-2 text-sky-400 text-sm font-bold uppercase tracking-wider">
+                <h3 className="text-lg md:text-xl font-bold font-orbitron text-white mb-3 group-hover:text-sky-400 transition-colors">{s.title}</h3>
+                <p className="text-slate-400 leading-relaxed text-xs md:text-sm mb-6">{s.desc}</p>
+                <div className="mt-auto flex items-center gap-2 text-sky-400 text-[10px] md:text-sm font-bold uppercase tracking-wider">
                   Details
                   <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                 </div>
@@ -121,43 +121,45 @@ const Services: React.FC = () => {
 
       {/* Service Detail Modal */}
       {selectedService && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-md" onClick={closeModal}></div>
-          <div className="relative w-full max-w-xl glass bg-slate-900 border border-white/20 p-8 rounded-[2.5rem] shadow-2xl animate-in fade-in zoom-in-95 duration-300">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-sm" onClick={closeModal}></div>
+          <div className="relative w-full max-w-lg glass bg-slate-900 border border-white/20 p-6 md:p-8 rounded-[2rem] shadow-2xl animate-in fade-in zoom-in-95 duration-300 max-h-[90vh] overflow-y-auto">
             <button 
               onClick={closeModal}
-              className="absolute top-6 right-6 text-slate-400 hover:text-white p-2 rounded-full hover:bg-white/5"
+              className="sticky top-0 float-right text-slate-400 hover:text-white p-2 rounded-full hover:bg-white/5 z-10 bg-slate-900/50 backdrop-blur-sm"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
-            <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${selectedService.color} flex items-center justify-center text-white mb-8 shadow-2xl shadow-sky-500/20 mx-auto`}>
-              {selectedService.icon}
-            </div>
+            <div className="clear-both pt-4 flex flex-col items-center">
+              <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-gradient-to-br ${selectedService.color} flex items-center justify-center text-white mb-6 shadow-2xl shadow-sky-500/20`}>
+                {selectedService.icon}
+              </div>
 
-            <h3 className="text-3xl font-orbitron font-bold text-center text-white mb-4">{selectedService.title}</h3>
-            <div className="h-0.5 w-16 bg-sky-500 mx-auto mb-8 rounded-full"></div>
-            
-            <p className="text-slate-300 text-lg leading-relaxed text-center mb-10">
-              {selectedService.detail}
-            </p>
+              <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-center text-white mb-3">{selectedService.title}</h3>
+              <div className="h-0.5 w-12 md:w-16 bg-sky-500 mb-6 rounded-full"></div>
+              
+              <p className="text-slate-300 text-sm md:text-lg leading-relaxed text-center mb-8">
+                {selectedService.detail}
+              </p>
 
-            <div className="flex flex-col gap-4">
-              <a 
-                href={`https://api.whatsapp.com/send?phone=8801307085310&text=I%20am%20interested%20in%20${selectedService.title}%20service`} 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-sky-500 hover:bg-sky-400 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-xl shadow-sky-500/20"
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.334l-.669 2.438 2.492-.654c.991.541 1.884.882 2.92.883 3.181 0 5.767-2.586 5.768-5.766 0-3.181-2.587-5.766-5.768-5.766zM12.031 16.924c-1.012 0-2-.271-2.859-.78l-.204-.123-1.488.39.397-1.451-.135-.215c-.56-.893-.855-1.921-.854-2.978 0-3.076 2.502-5.578 5.58-5.578 3.076 0 5.578 2.502 5.578 5.578-.002 3.078-2.504 5.58-5.58 5.58z"/></svg>
-                Contact for Service
-              </a>
-              <button 
-                onClick={closeModal}
-                className="w-full py-4 rounded-2xl font-bold text-slate-400 hover:text-white transition-colors"
-              >
-                Go Back
-              </button>
+              <div className="w-full flex flex-col gap-3">
+                <a 
+                  href={`https://api.whatsapp.com/send?phone=8801307085310&text=I%20am%20interested%20in%20${selectedService.title}%20service`} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-sky-500 hover:bg-sky-400 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all active:scale-95 shadow-xl shadow-sky-500/20"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.334l-.669 2.438 2.492-.654c.991.541 1.884.882 2.92.883 3.181 0 5.767-2.586 5.768-5.766 0-3.181-2.587-5.766-5.768-5.766zM12.031 16.924c-1.012 0-2-.271-2.859-.78l-.204-.123-1.488.39.397-1.451-.135-.215c-.56-.893-.855-1.921-.854-2.978 0-3.076 2.502-5.578 5.58-5.578 3.076 0 5.578 2.502 5.578 5.578-.002 3.078-2.504 5.58-5.58 5.58z"/></svg>
+                  Contact for Service
+                </a>
+                <button 
+                  onClick={closeModal}
+                  className="w-full py-4 rounded-xl font-bold text-slate-400 hover:text-white transition-colors text-sm"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -16,8 +16,9 @@ export const generateSupportResponse = async (userMessage: string, history: { ro
       Primary Contact: 01307085310 (WhatsApp).
       Agent Numbers: 01892251000 (Bkash & Rocket), 01881015000 (All Agent).
       Services: Mobile Recharge, Digital Banking (Bkash, Nagad, Rocket), SIM PIN/PUK unlocking, Account recovery.
+      Key Feature: Identity Verification Hub. Users can search Birth Registration information and NID details directly via the website's 'Verify' section.
       Products: Power Banks (৳1250), Wireless Earbuds (৳1850), Premium Data Cables (৳350), Fast Wall Chargers (৳550).
-      Tone: Helpful, local, and professional. Use Bengali if the user speaks Bengali.`,
+      Tone: Helpful, local, and professional. Use Bengali if the user speaks Bengali. Tell users they can find the 'Search' or 'Verify' section in the navigation menu.`,
     }
   });
 
